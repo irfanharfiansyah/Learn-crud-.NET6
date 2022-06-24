@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class=" mb-2">Category List</h1>
+
+<partial name="_Notif"></partial>
+<table class="table table-hover text-center" style="width:fit-content">
+    <thead>
+        <tr class="table-secondary text-center">
+            <th scope="col">No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Order</th>
+            <th scope="col">Date & Time</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr class="table-active align-items-center" style="vertical-align:middle">
+                <th scope="row">@obj.Id</th>
+                <td>@obj.Name</td>
+                <td>@obj.DisplayOrder</td>
+                <td>@obj.CreatedDateTime</td>
+                <td class="d-flex">
+                    <a class="btn btn-sm btn-secondary me-1" asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+                    <form method="post" asp-action="Delete">
+                        <button class="btn btn-sm btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-primary" asp-controller="Category" asp-action="Create">Tambah Kategori</a>
+
+

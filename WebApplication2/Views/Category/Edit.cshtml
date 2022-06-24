@@ -1,0 +1,28 @@
+﻿@model Category
+
+
+<h1>Edit Data</h1>
+
+<form method="post" asp-action="Edit" >
+    <div class="card " style="width:50%">
+        <div class="card-body">
+            <div class="form-floating mb-3">
+                <input asp-for="Name" type="text" class="form-control" id="floatingInput" placeholder="Nama">
+                <label asp-for="Name">Nama</label>
+              <span asp-validation-for="Name" class="text-primary"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="DisplayOrder" type="number" class="form-control" id="floatingInput" placeholder="Display Order">
+                <label asp-for="DisplayOrder" for="floatingInput">Order</label>
+                <span asp-validation-for="DisplayOrder" class="text-primary"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a class="btn btn-secondary text-black" asp-controller="Category" asp-action="index">Kembali</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"></partial>
+}
+
